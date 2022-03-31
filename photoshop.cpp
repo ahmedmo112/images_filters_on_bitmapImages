@@ -26,7 +26,7 @@ int main()
     while (runner)
     {  
         cout<<"Please select a filter to apply or 0 to exit:\n1-Black & White Filter\n2-Invert Filter\n"<<
-        "3-Merge Filter\n4-Flip Filter\n5-Darken and Lighten Image\n6-Rotate Image\ns-Save the image to a file\n0-Exit\n";
+        "3-Merge Filter\n4-Flip Filter\n5-Rotate Image\n6-Darken and Lighten Image\ns-Save the image to a file\n0-Exit\n";
         cout<<"Your Choice : ";
         cin>>userinput;
         switch (userinput)
@@ -49,11 +49,11 @@ int main()
             break;
         case '5':
             filter5();
-            cout<<"_________________Darken and Lighten Done____________________\n\n";
+            cout<<"_________________Rotate Done____________________\n\n";
             break;
         case '6':
             filter6();
-            cout<<"_________________Rotate Done____________________\n\n";
+            cout<<"_________________Darken and Lighten Done____________________\n\n";
             break;
         case 's':
             saveImage();
@@ -124,7 +124,23 @@ void filter4(){
 
 //Ahmed M. Hany
 void filter5(){
-
+    int tmp,deg;
+    cout<<"Please Choose Rotation Degree:\n1-90 degree\n2-180 degree\n3-270 degree\nyour choice: ";
+    cin>>deg;
+    for (int i = 0; i < deg; i++)
+    {
+        
+        for (int i = 0; i < SIZE/2; i++) {
+            for (int j = i; j< SIZE-i-1; j++) {
+                tmp = image[i][j];
+                image[i][j] = image[SIZE-j-1][i];
+                image[SIZE-j-1][i]=image[SIZE-i-1][SIZE-j-1];
+                image[SIZE-i-1][SIZE-j-1]=image[j][SIZE-i-1];
+                image[j][SIZE-i-1] = tmp;       
+            }
+        }
+    
+    }
 }
 
 //Omnia
