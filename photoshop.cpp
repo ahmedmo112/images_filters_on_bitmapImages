@@ -142,12 +142,26 @@ void filter2()
 // Omnia
 void filter3()
 {
+    unsigned char image2[SIZE][SIZE];
+    char imageFileName [100];
+    cout<<"enter the image 2 file name : ";
+    cin >> imageFileName;
+    strcat (imageFileName , ".bmp");
+    readGSBMP (imageFileName, image2);
+  for (int i = 0; i < SIZE; i++) {
+    for (int j = 0; j< SIZE; j++) {
+            int average = 0;
+    average =(image [i][j] + image2 [i][j])/2;
+    image[i][j]= average;
+    }
+  }
+
 }
 
 // Ahmed Alaa
 void filter4()
 {
-
+ 
 }
 
 // Ahmed M. Hany
