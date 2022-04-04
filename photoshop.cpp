@@ -162,7 +162,34 @@ void filter3()
 // Ahmed Alaa
 void filter4()
 {
- 
+ int x =0;
+   char input;
+   cout<<"Flip (h)orizontally or (v)ertically : ";
+   cin>>input;
+   if (input == 'v')
+   {
+    for(int i=0; i < SIZE; i++){
+     for(int j=0; j < SIZE/2; j++){
+
+        x = image[i][j];
+        image[i][j]=image[i][SIZE-1-j];
+        image[i][SIZE-1-j]= x;
+      }
+   }
+   }else if(input == 'h'){
+
+   for(int i=0; i < SIZE/2; i++){
+     for(int j=0; j < SIZE; j++){
+
+        x = image[i][j];
+        image[i][j]=image[SIZE-1-i][j];
+        image[SIZE-1-i][j]= x;
+      }
+   }
+   }else
+   {
+     cout<<"unvalid input!";
+   }
 }
 
 // Ahmed M. Hany
@@ -191,4 +218,5 @@ void filter5()
 // Omnia
 void filter6()
 {
+
 }
