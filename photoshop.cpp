@@ -216,13 +216,50 @@ void filter5()
 }
 
 //darken
+void darken()
+{
+  for (int i =0 ; i < SIZE ; i++){
+    for ( int j = 0 ; j < SIZE ; j++){
+      image[i][j]= image[i][j]/2;
+    }
+  }
+}
 
 
 // lighten
+void lighten()
+{
+   for (int i =0 ; i < SIZE ; i++){
+    for ( int j = 0 ; j < SIZE ; j++){
+      int light ;
+      light = image[i][j] + (image[i][j]/2);
+      if ( light > 255){
+        image[i][j] = 255;
+      }
+      else 
+      {
+        image[i][j] = light ;
+      }
+    }
+  }
+}
 
 
 // Omnia
-void filter6()
+void filter6 ()
 {
-
+  int choice ;
+cout<<"do you want to "<<endl<<" 1-darken" <<endl<<" 2-lighten"<<endl;
+cin>>choice;
+if (choice == 1)
+{
+  darken();
+}
+else if (choice == 2)
+{
+  lighten();
+}
+else  {
+  cout<<"try again ";
+}
 }
