@@ -148,7 +148,7 @@ void filter3()
     cin >> imageFileName;
     strcat (imageFileName , ".bmp");
     readGSBMP (imageFileName, image2);
-    
+
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j< SIZE; j++) {
                 int average = 0;
@@ -214,6 +214,12 @@ void filter5()
         }
     }
 }
+
+//darken
+
+
+// lighten
+
 
 // Omnia
 void filter6()
