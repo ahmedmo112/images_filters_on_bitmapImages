@@ -1,3 +1,13 @@
+/*
+FCAI - Programing 1 - 2022 - Assignment 3
+Program Name : Photoshop 
+Program Description : Apply filters on images
+ Author1: Ahmed Mohamed Hany 20210038
+ Author2: ahmed Alaa Mohamed 20210027
+ Author3: Omnia Magdy abdelnaby 20211018
+ Date: 5-4-2022
+ Version: 1.0
+*/
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -5,8 +15,10 @@
 #include "bmplib.cpp"
 
 using namespace std;
+//declear image array
 unsigned char image[SIZE][SIZE];
 
+//declear functions
 void loadImage();
 void saveImage();
 
@@ -22,49 +34,51 @@ int main()
     char userinput;
     bool runner = true;
     cout << "Ahlan ya user ya habiby\n";
-    loadImage();
+    loadImage(); //call load image function
     while (runner)
     {
+        //choices of filters to apply
         cout << "Please select a filter to apply or 0 to exit:\n1-Black & White Filter\n2-Invert Filter\n"
              << "3-Merge Filter\n4-Flip Filter\n5-Rotate Image\n6-Darken and Lighten Image\ns-Save the image to a file\n0-Exit\n";
         cout << "Your Choice : ";
-        cin >> userinput;
-        switch (userinput)
+        cin >> userinput; // take from user his choice
+        switch (userinput) //switch statment for the choice
         {
         case '1':
-            filter1();
+            filter1(); //call filter 1 function
             cout << "_________________Black & White Done____________________\n\n";
             break;
         case '2':
-            filter2();
+            filter2(); //call filter 2 function
             cout << "_________________Invert Done____________________\n\n";
             break;
         case '3':
-            filter3();
+            filter3(); //call filter 3 function
             cout << "_________________Merge Done____________________\n\n";
             break;
         case '4':
-            filter4();
+            filter4(); //call filter 4 function
             cout << "_________________Flip Done____________________\n\n";
             break;
         case '5':
-            filter5();
+            filter5(); //call filter 5 function
             cout << "_________________Rotate Done____________________\n\n";
             break;
         case '6':
-            filter6();
+            filter6(); //call filter 6 function
             cout << "_________________Darken and Lighten Done____________________\n\n";
             break;
         case 's':
-            saveImage();
+            saveImage(); //call save image function
             cout << "_________________Saving File Done____________________\n\n";
             break;
         case '0':
             cout << "Thanks for using our Photoshop\n";
-            runner = false;
+            runner = false; //stop the program runner
             break;
 
         default:
+            cout<<"wrong input Please enter a vaild choice\n";
             break;
         }
     }
@@ -75,27 +89,19 @@ int main()
 void loadImage()
 {
     char imageFileName[100];
-
-    // Get gray scale image file name
     cout << "Please enter file name of the image to process: ";
-    cin >> imageFileName;
-
-    // Add to it .bmp extension and load image
-    strcat(imageFileName, ".bmp");
-    readGSBMP(imageFileName, image);
+    cin >> imageFileName; //get the file name from user
+    strcat(imageFileName, ".bmp");// Add to it .bmp extension and load image
+    readGSBMP(imageFileName, image); //read the file and add it to image array
 }
 
 void saveImage()
 {
     char imageFileName[100];
-
-    // Get gray scale image target file name
     cout << "Enter the target image file name: ";
-    cin >> imageFileName;
-
-    // Add to it .bmp extension and load image
-    strcat(imageFileName, ".bmp");
-    writeGSBMP(imageFileName, image);
+    cin >> imageFileName; //get the file name from user 
+    strcat(imageFileName, ".bmp");// Add to it .bmp extension and load image
+    writeGSBMP(imageFileName, image); //write the file from image array
 }
 
 // Ahmed Alaa
@@ -134,7 +140,8 @@ void filter2()
     {
         for (int j = 0; j < SIZE; j++)
         {
-            image[i][j] = 255 - image[i][j];
+            image[i][j] = 255 - image[i][j]; //get the pixel color and subtract it from 255
+                                            //and assign the value to the image pixel
         }
     }
 }
@@ -195,21 +202,21 @@ void filter4()
 // Ahmed M. Hany
 void filter5()
 {
-    int tmp, deg;
+    int tmp, deg; //declear variables tmp and deg
     cout << "Please Choose Rotation Degree:\n1-90 degree\n2-180 degree\n3-270 degree\nyour choice: ";
-    cin >> deg;
+    cin >> deg; //take from user what the degree he want to rotate
     for (int i = 0; i < deg; i++)
     {
 
-        for (int i = 0; i < SIZE / 2; i++)
+        for (int i = 0; i < SIZE / 2; i++) //rows till half
         {
-            for (int j = i; j < SIZE - i - 1; j++)
+            for (int j = i; j < SIZE - i - 1; j++) //subtract rows from 255
             {
-                tmp = image[i][j];
-                image[i][j] = image[SIZE - j - 1][i];
-                image[SIZE - j - 1][i] = image[SIZE - i - 1][SIZE - j - 1];
-                image[SIZE - i - 1][SIZE - j - 1] = image[j][SIZE - i - 1];
-                image[j][SIZE - i - 1] = tmp;
+                tmp = image[i][j]; //save the value of image 
+                image[i][j] = image[SIZE - j - 1][i]; //get top left side pixel equal bottom left side pixel
+                image[SIZE - j - 1][i] = image[SIZE - i - 1][SIZE - j - 1];//get bottom left side pixel equal bottom right side pixel
+                image[SIZE - i - 1][SIZE - j - 1] = image[j][SIZE - i - 1];//get bottom right side equal top right side pixel
+                image[j][SIZE - i - 1] = tmp;//get right side pixel equal top left side pixel that we save it at tmp
             }
         }
     }
