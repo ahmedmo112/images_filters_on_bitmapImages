@@ -155,15 +155,15 @@ void filter3()
     unsigned char image2[SIZE][SIZE];
     char imageFileName [100];
     cout<<"enter the image 2 file name : ";
-    cin >> imageFileName;
+    cin >> imageFileName; //get the file name from user
     strcat (imageFileName , ".bmp");
-    readGSBMP (imageFileName, image2);
+    readGSBMP (imageFileName, image2); //to load the image
 
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j< SIZE; j++) {
+    for (int i = 0; i < SIZE; i++) { //row
+        for (int j = 0; j< SIZE; j++) { //columns
                 int average = 0;
-        average =(image [i][j] + image2 [i][j])/2;
-        image[i][j]= average;
+        average =(image [i][j] + image2 [i][j])/2;  //get the average color by get the sum of two pictures pixel color and dividing by 2
+        image[i][j]= average;                       // set the new value to image pixel
         }
     }
 
@@ -244,7 +244,7 @@ void darken()
 {
   for (int i =0 ; i < SIZE ; i++){
     for ( int j = 0 ; j < SIZE ; j++){
-      image[i][j]= image[i][j]/2;
+      image[i][j]= image[i][j]/2;  //dividing each pixel color (image[i][j]) by 2
     }
   }
 }
@@ -256,9 +256,10 @@ void lighten()
    for (int i =0 ; i < SIZE ; i++){
     for ( int j = 0 ; j < SIZE ; j++){
       int light ;
-      light = image[i][j] + (image[i][j]/2);
-      if ( light > 255){
-        image[i][j] = 255;
+      light = image[i][j] + (image[i][j]/2); //get 50% of pixel color (image[i][j]/2) + the original pixel color
+      if ( light > 255)  //compare it with 255 incase light bigger than 255
+      {
+        image[i][j] = 255; //then set the color to 255
       }
       else 
       {
@@ -274,8 +275,9 @@ void filter6 ()
 {
   int choice ;
 cout<<"do you want to "<<endl<<" 1-darken" <<endl<<" 2-lighten"<<endl;
-cin>>choice;
-if (choice == 1)
+cin>>choice;  //to choosen between darker(1) or lighter (2)
+
+if (choice == 1) 
 {
   darken();
 }
