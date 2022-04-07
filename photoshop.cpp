@@ -108,25 +108,28 @@ void saveImage()
 void filter1()
 {
     double avg, sum;
+
     for (int i = 0; i < SIZE; i++)
     {
         for (int j = 0; j < SIZE; j++)
         {
-            sum += image[i][j];
+            sum += image[i][j]; //Add the size of each pixel to the sum to help to get avg
         }
     }
-    avg = sum / (SIZE * SIZE);
+
+    avg = sum / (SIZE * SIZE); //avg will help to know the color is black or white 
+
     for (int i = 0; i < SIZE; i++)
     {
         for (int j = 0; j < SIZE; j++)
         {
-            if (image[i][j] > avg)
+            if (image[i][j] > avg) // if the pixel (image[i][j]) bigger than avg it means the color is white
             {
                 image[i][j] = 255;
             }
-            else
-            {
 
+            else // if the pixel (image[i][j]) smaller than avg it means the color is black
+            {
                 image[i][j] = 0;
             }
         }
@@ -169,31 +172,45 @@ void filter3()
 // Ahmed Alaa
 void filter4()
 {
- int x =0;
-   char input;
+   int x =0;
+   char input;//to choosen between Flip (h)orizontally or (v)ertically
+
    cout<<"Flip (h)orizontally or (v)ertically : ";
    cin>>input;
+
    if (input == 'v')
    {
-    for(int i=0; i < SIZE; i++){
-     for(int j=0; j < SIZE/2; j++){
+    for(int i=0; i < SIZE; i++)
+    {
+     for(int j=0; j < SIZE/2; j++)
+     {
 
+    // to Swap the first pixel with last pixel in the coulmn
         x = image[i][j];
         image[i][j]=image[i][SIZE-1-j];
         image[i][SIZE-1-j]= x;
+
       }
+    }
    }
-   }else if(input == 'h'){
 
-   for(int i=0; i < SIZE/2; i++){
-     for(int j=0; j < SIZE; j++){
+   else if(input == 'h')
+   {
 
+   for(int i=0; i < SIZE/2; i++)
+   {
+     for(int j=0; j < SIZE; j++)
+     {
+
+   // to Swap the first pixel with last pixel in the coulmn 
         x = image[i][j];
         image[i][j]=image[SIZE-1-i][j];
         image[SIZE-1-i][j]= x;
       }
+    }
    }
-   }else
+   
+   else //to avoid error
    {
      cout<<"unvalid input!";
    }
