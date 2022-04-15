@@ -28,6 +28,12 @@ void filter3();
 void filter4();
 void filter5();
 void filter6();
+void filter7();
+void filter8();
+void filter9();
+void filtera();
+void filterb();
+void filterc();
 
 int main()
 {
@@ -39,7 +45,8 @@ int main()
     {
         //choices of filters to apply
         cout << "Please select a filter to apply or 0 to exit:\n1-Black & White Filter\n2-Invert Filter\n"
-             << "3-Merge Filter\n4-Flip Filter\n5-Rotate Image\n6-Darken and Lighten Image\ns-Save the image to a file\n0-Exit\n";
+             << "3-Merge Filter\n4-Flip Filter\n5-Rotate Image\n6-Darken and Lighten Image\n7-Detect Image Edges\n8-Enlarge Image\n"
+             <<"9-Shrink Image\na-Mirror 1/2 IMage\nb-Shuffle Image\nc-Blur Image\ns-Save the image to a file\n0-Exit\n";
         cout << "Your Choice : ";
         cin >> userinput; // take from user his choice
         switch (userinput) //switch statment for the choice
@@ -67,6 +74,30 @@ int main()
         case '6':
             filter6(); //call filter 6 function
             cout << "_________________Darken and Lighten Done____________________\n\n";
+            break;
+        case '7':
+            filter7(); //call filter 7 function
+            cout << "_________________Detect Image Edge Done____________________\n\n";
+            break;
+        case '8':
+            filter8(); //call filter 8 function
+            cout << "_________________Enlarge Done____________________\n\n";
+            break;
+        case '9':
+            filter9(); //call filter 9 function
+            cout << "_________________Shrink Done____________________\n\n";
+            break;
+        case 'a':
+            filtera(); //call filter a function
+            cout << "_________________Mirror Done____________________\n\n";
+            break;
+        case 'b':
+            filterb(); //call filter b function
+            cout << "_________________shuffle Done____________________\n\n";
+            break;
+        case 'c':
+            filterc(); //call filter c function
+            cout << "_________________Blur Done____________________\n\n";
             break;
         case 's':
             saveImage(); //call save image function
@@ -105,7 +136,7 @@ void saveImage()
 }
 
 // Ahmed Alaa
-void filter1()
+void filter1() //Black & White
 {
     double avg, sum;
 
@@ -137,7 +168,7 @@ void filter1()
 }
 
 // Ahmed M. Hany
-void filter2()
+void filter2() //Invert
 {
     for (int i = 0; i < SIZE; i++)
     {
@@ -150,7 +181,7 @@ void filter2()
 }
 
 // Omnia
-void filter3()
+void filter3() //merge
 {
     unsigned char image2[SIZE][SIZE];
     char imageFileName [100];
@@ -170,7 +201,7 @@ void filter3()
 }
 
 // Ahmed Alaa
-void filter4()
+void filter4() //Flip
 {
    int x =0;
    char input;//to choosen between Flip (h)orizontally or (v)ertically
@@ -217,7 +248,7 @@ void filter4()
 }
 
 // Ahmed M. Hany
-void filter5()
+void filter5() //Rotate
 {
     int tmp, deg; //declear variables tmp and deg
     cout << "Please Choose Rotation Degree:\n1-90 degree\n2-180 degree\n3-270 degree\nyour choice: ";
@@ -271,7 +302,7 @@ void lighten()
 
 
 // Omnia
-void filter6 ()
+void filter6 () //darkem and lighten
 {
   int choice ;
 cout<<"do you want to "<<endl<<" 1-darken" <<endl<<" 2-lighten"<<endl;
@@ -288,4 +319,217 @@ else if (choice == 2)
 else  {
   cout<<"try again ";
 }
+}
+
+//ahmed alaa
+void filter7(){ //Detect Edges
+
+}
+
+//Ahmed M. Hany
+
+unsigned char img2[SIZE][SIZE] ;
+int x=0,y=0;
+
+void copyImage(unsigned char img2[SIZE][SIZE]){
+  for (int i = 0; i < SIZE; i++)
+  {
+    for (int j = 0; j < SIZE; j++)
+    {
+      img2[i][j]=image[i][j];
+    }
+  }
+}
+
+void enlargeFirstQ(){
+   for (int i = 0; i < SIZE/2; i++) {
+      for (int j = 0; j< SIZE/2; j++) {
+        image[x][y] = img2[i][j];
+        image[x][y+1]= img2[i][j];
+        image[x+1][y+1]= img2[i][j];
+        image[x+1][y]= img2[i][j];
+        y+=2;
+      }
+      x+=2;
+      y=0;
+    }
+}
+
+void enlargeSecondQ(){
+  for (int i = 0; i < SIZE/2; i++) {
+      for (int j = (SIZE/2); j< SIZE; j++) {
+        image[x][y] = img2[i][j];
+        image[x][y+1]= img2[i][j];
+        image[x+1][y+1]= img2[i][j];
+        image[x+1][y]= img2[i][j];
+        y+=2;
+      }
+      x+=2;
+      y=0;
+    }
+}
+
+void enlargeThirdQ(){
+  for (int i = (SIZE/2); i < SIZE; i++) {
+      for (int j = 0; j< SIZE/2; j++) {
+        image[x][y] = img2[i][j];
+        image[x][y+1]= img2[i][j];
+        image[x+1][y+1]= img2[i][j];
+        image[x+1][y]= img2[i][j];
+        y+=2;
+      }
+      x+=2;
+      y=0;
+    }
+}
+
+void enlargefouthQ(){
+  for (int i = (SIZE/2); i < SIZE; i++) {
+      for (int j = (SIZE/2); j< SIZE; j++) {
+        image[x][y] = img2[i][j];
+        image[x][y+1]= img2[i][j];
+        image[x+1][y+1]= img2[i][j];
+        image[x+1][y]= img2[i][j];
+        y+=2;
+      }
+      x+=2;
+      y=0;
+    }
+}
+
+void filter8(){ // Enlarge Image
+  int choice;
+  
+  copyImage(img2);
+
+  cout<<"choose which quarter you want to enlarge 1 , 2 , 3 or 4: ";
+  cin>>choice;
+  if (choice == 1)
+  {
+   enlargeFirstQ();
+  }else if (choice == 2){
+    enlargeSecondQ();
+  }else if (choice == 3)
+  {
+    enlargeThirdQ();
+  }else if (choice == 4)
+  {
+    enlargefouthQ();
+  }else{
+    cout<<"unvalid quarter number , Try again!\n";
+  }
+
+}
+
+//Omnia
+void filter9(){ // Shrink image
+  
+}
+
+//Ahmed Alaa
+void filtera(){ // Mirror image
+  
+}
+
+//Ahmed M. Hany
+
+unsigned char Q1[4][128][128] ;
+
+void saveEachQuarter(){
+  x=0,y=0;
+  for (int i = 0; i < SIZE/2; i++)
+  {
+    for (int j = 0; j < SIZE/2; j++)
+    {
+      Q1[0][x][y]=image[i][j];
+      y++;
+    }
+    x++;
+    y=0;
+  }
+  x=0,y=0;
+  for (int i = 0; i < SIZE/2; i++) {
+      for (int j = (SIZE/2); j< SIZE; j++) {
+        Q1[1][x][y]=image[i][j];
+        y++;
+      }
+      x++;
+      y=0;
+    }
+    x=0,y=0;
+    for (int i = (SIZE/2); i < SIZE; i++) {
+      for (int j = 0; j< SIZE/2; j++) {
+        Q1[2][x][y]=image[i][j];
+        y++;
+      }
+      x++;
+      y=0;
+  }
+
+  x=0,y=0;
+  for (int i = (SIZE/2); i < SIZE; i++) {
+      for (int j = (SIZE/2); j< SIZE; j++) {
+        Q1[3][x][y]=image[i][j];
+        y++;
+      }
+      x++;
+      y=0;
+  }
+}
+void filterb(){ //shuffle image
+  saveEachQuarter();
+  int choice[4];
+    x=0,y=0;
+
+  cout<<"Enter new order of Quarters: ";
+  for (int i = 0; i < 4; i++)
+  {
+  cin>>choice[i];
+  }
+
+    for (int i = 0; i < SIZE/2; i++) {
+      for (int j = 0; j< SIZE/2; j++) {
+        image[i][j] = Q1[choice[0]-1][x][y];
+        y++;
+      }
+      x++;
+      y=0;
+    }
+    x=0,y=0;
+    for (int i = 0; i < SIZE/2; i++) {
+      for (int j = (SIZE/2); j< SIZE; j++) {
+        image[i][j] = Q1[choice[1]-1][x][y];
+
+        y++;
+      }
+      x++;
+      y=0;
+    }
+
+    x=0,y=0;
+
+    for (int i = (SIZE/2); i < SIZE; i++) {
+      for (int j = 0; j< SIZE/2; j++) {
+        image[i][j] = Q1[choice[2]-1][x][y];
+        y++;
+      }
+      x++;
+      y=0;
+    }
+
+    x=0,y=0;
+
+    for (int i = (SIZE/2); i < SIZE; i++) {
+      for (int j = (SIZE/2); j< SIZE; j++) {
+        image[i][j] = Q1[choice[3]-1][x][y];
+        y++;
+      }
+      x++;
+      y=0;
+    }
+}
+
+//omnia
+void filterc(){ //Blur
+  
 }
