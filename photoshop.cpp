@@ -433,7 +433,7 @@ void filtera(){ // Mirror image
 
 //Ahmed M. Hany
 
-unsigned char Q1[4][128][128] ;
+unsigned char quarterArr[4][128][128] ;
 
 void saveEachQuarter(){
   x=0,y=0;
@@ -441,7 +441,7 @@ void saveEachQuarter(){
   {
     for (int j = 0; j < SIZE/2; j++)
     {
-      Q1[0][x][y]=image[i][j];
+      quarterArr[0][x][y]=image[i][j];
       y++;
     }
     x++;
@@ -450,7 +450,7 @@ void saveEachQuarter(){
   x=0,y=0;
   for (int i = 0; i < SIZE/2; i++) {
       for (int j = (SIZE/2); j< SIZE; j++) {
-        Q1[1][x][y]=image[i][j];
+        quarterArr[1][x][y]=image[i][j];
         y++;
       }
       x++;
@@ -459,7 +459,7 @@ void saveEachQuarter(){
     x=0,y=0;
     for (int i = (SIZE/2); i < SIZE; i++) {
       for (int j = 0; j< SIZE/2; j++) {
-        Q1[2][x][y]=image[i][j];
+        quarterArr[2][x][y]=image[i][j];
         y++;
       }
       x++;
@@ -469,7 +469,7 @@ void saveEachQuarter(){
   x=0,y=0;
   for (int i = (SIZE/2); i < SIZE; i++) {
       for (int j = (SIZE/2); j< SIZE; j++) {
-        Q1[3][x][y]=image[i][j];
+        quarterArr[3][x][y]=image[i][j];
         y++;
       }
       x++;
@@ -489,7 +489,7 @@ void filterb(){ //shuffle image
 
     for (int i = 0; i < SIZE/2; i++) {
       for (int j = 0; j< SIZE/2; j++) {
-        image[i][j] = Q1[choice[0]-1][x][y];
+        image[i][j] = quarterArr[choice[0]-1][x][y];
         y++;
       }
       x++;
@@ -498,7 +498,7 @@ void filterb(){ //shuffle image
     x=0,y=0;
     for (int i = 0; i < SIZE/2; i++) {
       for (int j = (SIZE/2); j< SIZE; j++) {
-        image[i][j] = Q1[choice[1]-1][x][y];
+        image[i][j] = quarterArr[choice[1]-1][x][y];
 
         y++;
       }
@@ -510,7 +510,7 @@ void filterb(){ //shuffle image
 
     for (int i = (SIZE/2); i < SIZE; i++) {
       for (int j = 0; j< SIZE/2; j++) {
-        image[i][j] = Q1[choice[2]-1][x][y];
+        image[i][j] = quarterArr[choice[2]-1][x][y];
         y++;
       }
       x++;
@@ -521,7 +521,7 @@ void filterb(){ //shuffle image
 
     for (int i = (SIZE/2); i < SIZE; i++) {
       for (int j = (SIZE/2); j< SIZE; j++) {
-        image[i][j] = Q1[choice[3]-1][x][y];
+        image[i][j] = quarterArr[choice[3]-1][x][y];
         y++;
       }
       x++;
