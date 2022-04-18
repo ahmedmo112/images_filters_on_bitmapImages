@@ -323,6 +323,20 @@ else  {
 
 //ahmed alaa
 void filter7(){ //Detect Edges
+  for (int i = 0; i < SIZE; i++)
+  {
+    for (int j = 0; j < SIZE; j++)
+    {
+      if (abs(image[i][j+1]-image[i][j])>33 || abs(image[i+1][j]-image[i][j])>33){
+        image[i][j]=0;
+      }
+      else{
+        image [i][j]=255;
+      }
+    
+    }
+  }
+  
 
 }
 
@@ -426,10 +440,77 @@ void filter9(){ // Shrink image
   
 }
 
+
+
 //Ahmed Alaa
-void filtera(){ // Mirror image
-  
+void mirror_left(){
+  for (int i = 0; i < SIZE; i++)
+  {
+    for (int j = 0; j < SIZE/2; j++)
+    {
+      
+       image [i][SIZE -j-1] = image [i][j];
+    }
+    
+  }
+
 }
+
+void mirror_right(){
+ for (int i = 0; i < SIZE; i++)
+  {
+    for (int j = 0; j < SIZE/2; j++)
+    {
+     
+      image [i][j] = image [i][SIZE -j-1];
+    }
+    
+  }
+}
+void mirror_upper (){
+   for (int i = 0; i < SIZE/2; i++)
+  {
+    for (int j = 0; j < SIZE; j++)
+    {
+      
+       image [SIZE -i-1][j] = image [i][j];
+    }
+    
+  }
+}
+
+void mirror_lower(){
+ for (int i = 0; i < SIZE/2; i++)
+  {
+    for (int j = 0; j < SIZE; j++)
+    {
+      
+       image [i][j] = image [SIZE -i-1][j];
+    }
+    
+  }
+
+
+}
+void filtera(){ // Mirror image
+    int x=0;
+    cout << "1-left1/2\n2-right1/2\n3-upper1/2\n4-lower1/2\nplease choose type of mirror : ";
+    cin>>x;
+
+    if(x ==1){
+      mirror_left();
+    }else  if(x ==2){
+      mirror_right();
+    }else  if(x ==3){
+      mirror_upper();
+    }else  if(x ==4){
+      mirror_lower();
+    }else{
+      cout<< "Wrong input";
+    }
+}
+
+
 
 //Ahmed M. Hany
 
