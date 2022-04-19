@@ -481,7 +481,6 @@ void filter9(){
     
 }
 
-
 void mirror_left(){
   for (int i = 0; i < SIZE; i++)
   {
