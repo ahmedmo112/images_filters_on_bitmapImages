@@ -345,7 +345,22 @@ void filter6(){
 }
 
 void filter7(){
+   for (int i = 0; i < SIZE; i++)
+   {
+    for (int j = 0; j < SIZE; j++)
+    {
+     for (int k = 0; k < 3; k++)
+      {
+      if (abs(imgRGB[i][j+1][k]-imgRGB[i][j][k])>50 || abs(imgRGB[i+1][j][k]-imgRGB[i][j][k])>50){
+        imgRGB[i][j][k]=rand();
+      }
+      else{
+       imgRGB[i][j][k]=0;
+      }
     
+    }
+   }
+   }
 }
 
 
@@ -466,8 +481,82 @@ void filter9(){
     
 }
 
-void filtera(){
+
+void mirror_left(){
+  for (int i = 0; i < SIZE; i++)
+  {
+    for (int j = 0; j < SIZE/2; j++)
+    {
+      for (int k = 0; k < 3; k++)
+        {
+      
+      imgRGB[i][SIZE -j-1][k] = imgRGB[i][j][k];
+        }
+    }
     
+  }
+
+}
+
+void mirror_right(){
+ for (int i = 0; i < SIZE; i++)
+  {
+    for (int j = 0; j < SIZE/2; j++)
+    {
+     for (int k = 0; k < 3; k++)
+        {
+      imgRGB[i][j][k] =  imgRGB[i][SIZE -j-1][k];
+        }
+    }
+    
+  }
+}
+void mirror_upper (){
+   for (int i = 0; i < SIZE/2; i++)
+  {
+    for (int j = 0; j < SIZE; j++)
+    {
+      for (int k = 0; k < 3; k++)
+        {
+      imgRGB [SIZE -i-1][j][k] =imgRGB[i][j][k];
+        }
+    }
+    
+  }
+}
+
+void mirror_lower(){
+ for (int i = 0; i < SIZE/2; i++)
+  {
+    for (int j = 0; j < SIZE; j++)
+    {
+     for (int k = 0; k < 3; k++)
+        { 
+       imgRGB[i][j][k] = imgRGB [SIZE -i-1][j][k];
+        }
+    }
+    
+  }
+
+
+}
+
+void filtera(){
+    int x=0;
+    cout << "1-left1/2\n2-right1/2\n3-upper1/2\n4-lower1/2\nplease choose type of mirror : ";
+    cin>>x;
+
+    if(x ==1){
+      mirror_left();
+    }else  if(x ==2){
+      mirror_right();
+    }else  if(x ==3){
+      mirror_upper();
+    }else  if(x ==4){
+      mirror_lower();
+    }else{
+      cout<< "Wrong input";
+    }
 }
 
 //-------------------
