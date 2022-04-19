@@ -349,16 +349,16 @@ void filter7(){
    {
     for (int j = 0; j < SIZE; j++)
     {
-     for (int k = 0; k < 3; k++)
-      {
-      if (abs(imgRGB[i][j+1][k]-imgRGB[i][j][k])>50 || abs(imgRGB[i+1][j][k]-imgRGB[i][j][k])>50){
-        imgRGB[i][j][k]=rand();
+      if (abs(imgRGB[i][j+1][0]-imgRGB[i][j][0])>25 || abs(imgRGB[i+1][j][0]-imgRGB[i][j][0])>25){
+        imgRGB[i][j][0]=0;
+        imgRGB[i][j][1]=0;
+        imgRGB[i][j][2]=0;
       }
       else{
-       imgRGB[i][j][k]=0;
+       imgRGB[i][j][0]=255;
+       imgRGB[i][j][1]=255;
+       imgRGB[i][j][2]=255;
       }
-    
-    }
    }
    }
 }
