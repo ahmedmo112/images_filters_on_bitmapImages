@@ -436,9 +436,70 @@ void filter8(){ // Enlarge Image
 }
 
 //Omnia
-void filter9(){ // Shrink image
-  
+// Shrink image
+ unsigned char shrinkimage[SIZE][SIZE];
+void copyOfImage(unsigned char shrinkimage[SIZE][SIZE])
+{
+    for (int i = 0 ;i < SIZE ; i++)
+    {
+        for ( int j = 0 ; j < SIZE ; j++)
+        {
+            image[i][j]= shrinkimage[i][j];
+        }
+    }
 }
+
+
+void shrink4()
+{
+    for (int i = 0 ; i < SIZE ; i++){
+        for (int j = 0 ; j < SIZE ; j++){
+            shrinkimage[i/4][j/4] = image[i][j];
+        }
+    }
+
+}
+
+void shrink2()
+{
+    for (int i = 0 ; i < SIZE ; i++){
+        for (int j = 0 ; j < SIZE ; j++){
+            shrinkimage[i/2][j/2] = image[i][j];
+        }
+    }
+
+}
+
+void shrink3()
+{
+    for (int i = 0 ; i < SIZE ; i++){
+        for (int j = 0 ; j < SIZE ; j++){
+            shrinkimage[i/3][j/3] = image[i][j];
+        }
+    }
+
+}
+
+void filter9(){
+  int shrink;
+  cout<<"do you want to shrink the image to :" <<endl<<"1-shrink 1/2"<<endl<<"2-shrink 1/3"<< endl<<"3-shrink 1/4"<<endl;
+  cin>>shrink;
+  if (shrink == 1){
+      shrink2();
+  }
+  else if (shrink == 2){
+      shrink3();
+  }
+  else if (shrink == 3){
+      shrink4();
+  }
+  else {
+          cout<<"try again";
+  }
+  copyOfImage(shrinkimage);
+}
+  
+
 
 
 
