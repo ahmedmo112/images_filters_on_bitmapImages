@@ -477,8 +477,80 @@ void filter8(){
   }
 }
 
+//---------------------
+
+unsigned char shrinkimage[SIZE][SIZE][RGB];
+void copyOfImage(unsigned char shrinkimage[SIZE][SIZE][RGB])
+{
+    for (int i = 0 ;i < SIZE ; i++)
+    {
+        for ( int j = 0 ; j < SIZE ; j++)
+        {
+          for (int k = 0; k < 3; k++)
+          {
+            imgRGB[i][j][k]= shrinkimage[i][j][k];
+          }
+        }
+    }
+}
+
+
+void shrink4()
+{
+    for (int i = 0 ; i < SIZE ; i++){
+        for (int j = 0 ; j < SIZE ; j++){
+          for (int k = 0; k < 3; k++)
+          {
+            shrinkimage[i/4][j/4][k] = imgRGB[i][j][k];
+          }
+        }
+    }
+
+}
+
+void shrink2()
+{
+    for (int i = 0 ; i < SIZE ; i++){
+        for (int j = 0 ; j < SIZE ; j++){
+            for (int k = 0; k < 3; k++)
+          {
+            shrinkimage[i/2][j/2][k] = imgRGB[i][j][k];
+          }
+        }
+    }
+
+}
+
+void shrink3()
+{
+    for (int i = 0 ; i < SIZE ; i++){
+        for (int j = 0 ; j < SIZE ; j++){
+            for (int k = 0; k < 3; k++)
+          {
+            shrinkimage[i/3][j/3][k] = imgRGB[i][j][k];
+          }
+        }
+    }
+
+}
+
 void filter9(){
-    
+  int shrink;
+  cout<<"do you want to shrink the image to :" <<endl<<"1-shrink 1/2"<<endl<<"2-shrink 1/3"<< endl<<"3-shrink 1/4"<<endl;
+  cin>>shrink;
+  if (shrink == 1){
+      shrink2();
+  }
+  else if (shrink == 2){
+      shrink3();
+  }
+  else if (shrink == 3){
+      shrink4();
+  }
+  else {
+          cout<<"try again";
+  }
+  copyOfImage(shrinkimage);
 }
 
 void mirror_left(){
@@ -689,6 +761,41 @@ void filterb(){
     }
 }
 
+
+unsigned char m[3][3][3];
+
+void part(int k,int f){
+  int sum=0;
+  for (int x= 0; x < 3; x++)
+  { 
+    sum =0;
+    for (int i =k ; i < k+3 ; i++){
+      for ( int j = f ; j < f+3 ; j++){
+        m[i-k][j-f][x]=imgRGB[i][j][x];
+        sum += imgRGB[i][j][x];
+        }
+      }
+    sum = sum/9;
+    m[1][1][x]=sum;
+  }
+  for (int i =k ; i < k+3 ; i++){
+      for ( int j = f ; j < f+3 ; j++){
+        for (int v = 0; v < 3; v++)
+        {
+          imgRGB[i][j][v]=m[i-k][j-f][v];
+        }
+      }
+  }
+}
+
 void filterc(){
-    
+
+  for (int v = 0; v < 2; v++)
+  {
+    for (int i =0 ; i < SIZE ; i++){
+        for ( int j = 0 ; j < SIZE ; j++){
+          part(i,j);
+        }
+    }
+  }
 }
