@@ -349,10 +349,10 @@ void filter7(){ //Detect Edges
 
 //Ahmed M. Hany
 
-unsigned char img2[SIZE][SIZE] ;
+unsigned char img2[SIZE][SIZE] ; //declear new imagr aaray
 int x=0,y=0;
 
-void copyImage(unsigned char img2[SIZE][SIZE]){
+void copyImage(unsigned char img2[SIZE][SIZE]){ //function to take a copy from the origianl image
   for (int i = 0; i < SIZE; i++)
   {
     for (int j = 0; j < SIZE; j++)
@@ -362,69 +362,69 @@ void copyImage(unsigned char img2[SIZE][SIZE]){
   }
 }
 
-void enlargeFirstQ(){
+void enlargeFirstQ(){// function for enlarge first Quarter
    for (int i = 0; i < SIZE/2; i++) {
       for (int j = 0; j< SIZE/2; j++) {
-        image[x][y] = img2[i][j];
-        image[x][y+1]= img2[i][j];
-        image[x+1][y+1]= img2[i][j];
-        image[x+1][y]= img2[i][j];
-        y+=2;
+        image[x][y] = img2[i][j]; //take first pixel and assign it to first pixel in image
+        image[x][y+1]= img2[i][j]; //take second on right pixel and assign it to  second on right pixel in image
+        image[x+1][y+1]= img2[i][j];//take last pixel and assign it to last pixel in image
+        image[x+1][y]= img2[i][j]; //take dwon pixel and assign it to dawon pixel in image
+        y+=2; //counter for the image we want to enlarge by step 2 pixel for columns
       }
-      x+=2;
-      y=0;
+      x+=2;//counter for the image we want to enlarge by step 2 pixel for rows
+      y=0; //rest columns
     }
 }
 
-void enlargeSecondQ(){
+void enlargeSecondQ(){// function for enlarge second Quarter
   for (int i = 0; i < SIZE/2; i++) {
       for (int j = (SIZE/2); j< SIZE; j++) {
-        image[x][y] = img2[i][j];
-        image[x][y+1]= img2[i][j];
-        image[x+1][y+1]= img2[i][j];
-        image[x+1][y]= img2[i][j];
-        y+=2;
+        image[x][y] = img2[i][j];//take first pixel and assign it to first pixel in image
+        image[x][y+1]= img2[i][j];//take second on right pixel and assign it to  second on right pixel in image
+        image[x+1][y+1]= img2[i][j]; //take last pixel and assign it to last pixel in image
+        image[x+1][y]= img2[i][j]; //take dwon pixel and assign it to dawon pixel in image
+        y+=2;//counter for the image we want to enlarge by step 2 pixel for columns
       }
-      x+=2;
-      y=0;
+      x+=2;//counter for the image we want to enlarge by step 2 pixel for rows
+      y=0;//rest columns
     }
 }
 
-void enlargeThirdQ(){
+void enlargeThirdQ(){// function for enlarge third Quarter
   for (int i = (SIZE/2); i < SIZE; i++) {
       for (int j = 0; j< SIZE/2; j++) {
-        image[x][y] = img2[i][j];
-        image[x][y+1]= img2[i][j];
-        image[x+1][y+1]= img2[i][j];
-        image[x+1][y]= img2[i][j];
-        y+=2;
+        image[x][y] = img2[i][j];//take first pixel and assign it to first pixel in image
+        image[x][y+1]= img2[i][j];//take second on right pixel and assign it to  second on right pixel in image
+        image[x+1][y+1]= img2[i][j];//take last pixel and assign it to last pixel in image
+        image[x+1][y]= img2[i][j];//take dwon pixel and assign it to dawon pixel in image
+        y+=2;//counter for the image we want to enlarge by step 2 pixel for columns
       }
-      x+=2;
-      y=0;
+      x+=2;//counter for the image we want to enlarge by step 2 pixel for rows
+      y=0;//rest columns
     }
 }
 
-void enlargefouthQ(){
+void enlargefouthQ(){// function for enlarge fourth Quarter
   for (int i = (SIZE/2); i < SIZE; i++) {
       for (int j = (SIZE/2); j< SIZE; j++) {
-        image[x][y] = img2[i][j];
-        image[x][y+1]= img2[i][j];
-        image[x+1][y+1]= img2[i][j];
-        image[x+1][y]= img2[i][j];
-        y+=2;
+        image[x][y] = img2[i][j];//take first pixel and assign it to first pixel in image
+        image[x][y+1]= img2[i][j];//take second on right pixel and assign it to  second on right pixel in image
+        image[x+1][y+1]= img2[i][j];//take last pixel and assign it to last pixel in image
+        image[x+1][y]= img2[i][j];//take dwon pixel and assign it to dawon pixel in image
+        y+=2;//counter for the image we want to enlarge by step 2 pixel for columns
       }
-      x+=2;
-      y=0;
+      x+=2;//counter for the image we want to enlarge by step 2 pixel for rows
+      y=0;//rest columns
     }
 }
 
 void filter8(){ // Enlarge Image
   int choice;
   
-  copyImage(img2);
+  copyImage(img2); //take a copy of image
 
   cout<<"choose which quarter you want to enlarge 1 , 2 , 3 or 4: ";
-  cin>>choice;
+  cin>>choice; //take user input
   if (choice == 1)
   {
    enlargeFirstQ();
@@ -581,15 +581,15 @@ void filtera(){ // Mirror image
 
 //Ahmed M. Hany
 
-unsigned char quarterArr[4][128][128] ;
+unsigned char quarterArr[4][128][128] ; // declear quarter array for each quarter
 
-void saveEachQuarter(){
+void saveEachQuarter(){ //functon for store every quarter
   x=0,y=0;
   for (int i = 0; i < SIZE/2; i++)
   {
     for (int j = 0; j < SIZE/2; j++)
     {
-      quarterArr[0][x][y]=image[i][j];
+      quarterArr[0][x][y]=image[i][j]; //get pixels of first Quarter into quarter array
       y++;
     }
     x++;
@@ -598,7 +598,7 @@ void saveEachQuarter(){
   x=0,y=0;
   for (int i = 0; i < SIZE/2; i++) {
       for (int j = (SIZE/2); j< SIZE; j++) {
-        quarterArr[1][x][y]=image[i][j];
+        quarterArr[1][x][y]=image[i][j];//get pixels of second Quarter into quarter array
         y++;
       }
       x++;
@@ -607,7 +607,7 @@ void saveEachQuarter(){
     x=0,y=0;
     for (int i = (SIZE/2); i < SIZE; i++) {
       for (int j = 0; j< SIZE/2; j++) {
-        quarterArr[2][x][y]=image[i][j];
+        quarterArr[2][x][y]=image[i][j];//get pixels of third Quarter into quarter array
         y++;
       }
       x++;
@@ -617,7 +617,7 @@ void saveEachQuarter(){
   x=0,y=0;
   for (int i = (SIZE/2); i < SIZE; i++) {
       for (int j = (SIZE/2); j< SIZE; j++) {
-        quarterArr[3][x][y]=image[i][j];
+        quarterArr[3][x][y]=image[i][j];//get pixels of fourth Quarter into quarter array
         y++;
       }
       x++;
@@ -625,20 +625,20 @@ void saveEachQuarter(){
   }
 }
 void filterb(){ //shuffle image
-  saveEachQuarter();
+  saveEachQuarter(); //call save each quarter function
   int choice[4];
     x=0,y=0;
 
   cout<<"Enter new order of Quarters: ";
   for (int i = 0; i < 4; i++)
   {
-  cin>>choice[i];
+  cin>>choice[i]; //take from user the new order and save them in array
   }
 
     for (int i = 0; i < SIZE/2; i++) {
       for (int j = 0; j< SIZE/2; j++) {
-        image[i][j] = quarterArr[choice[0]-1][x][y];
-        y++;
+        image[i][j] = quarterArr[choice[0]-1][x][y]; //take the first index the user input and add it to first quarter at image
+        y++;                                           
       }
       x++;
       y=0;
@@ -646,6 +646,7 @@ void filterb(){ //shuffle image
     x=0,y=0;
     for (int i = 0; i < SIZE/2; i++) {
       for (int j = (SIZE/2); j< SIZE; j++) {
+        //take the second index the user input and add it to second quarter at image
         image[i][j] = quarterArr[choice[1]-1][x][y];
 
         y++;
@@ -658,6 +659,7 @@ void filterb(){ //shuffle image
 
     for (int i = (SIZE/2); i < SIZE; i++) {
       for (int j = 0; j< SIZE/2; j++) {
+        //take the third index the user input and add it to third quarter at image
         image[i][j] = quarterArr[choice[2]-1][x][y];
         y++;
       }
@@ -669,6 +671,7 @@ void filterb(){ //shuffle image
 
     for (int i = (SIZE/2); i < SIZE; i++) {
       for (int j = (SIZE/2); j< SIZE; j++) {
+        //take the fourth index the user input and add it to fourth quarter at image
         image[i][j] = quarterArr[choice[3]-1][x][y];
         y++;
       }
