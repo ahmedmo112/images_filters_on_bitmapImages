@@ -502,7 +502,6 @@ void mirror_lower(){
     
   }
 
-
 }
 void filtera(){ // Mirror image
     int x=0; // the number of mirror will user choose to do
