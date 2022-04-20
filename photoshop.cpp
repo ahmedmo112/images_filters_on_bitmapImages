@@ -134,7 +134,7 @@ void saveImage()
     strcat(imageFileName, ".bmp");// Add to it .bmp extension and load image
     writeGSBMP(imageFileName, image); //write the file from image array
 }
-
+//___________________________________________________________
 // Ahmed Alaa
 void filter1() //Black & White
 {
@@ -167,6 +167,7 @@ void filter1() //Black & White
     }
 }
 
+//___________________________________________________________
 // Ahmed M. Hany
 void filter2() //Invert
 {
@@ -179,6 +180,7 @@ void filter2() //Invert
         }
     }
 }
+//___________________________________________________________
 
 // Omnia
 void filter3() //merge
@@ -199,6 +201,7 @@ void filter3() //merge
     }
 
 }
+//___________________________________________________________
 
 // Ahmed Alaa
 void filter4() //Flip
@@ -246,6 +249,7 @@ void filter4() //Flip
      cout<<"unvalid input!";
    }
 }
+//___________________________________________________________
 
 // Ahmed M. Hany
 void filter5() //Rotate
@@ -269,6 +273,7 @@ void filter5() //Rotate
         }
     }
 }
+//___________________________________________________________
 
 //darken
 void darken()
@@ -320,6 +325,7 @@ else  {
   cout<<"try again ";
 }
 }
+//___________________________________________________________
 
 //ahmed alaa
 void filter7(){ //Detect Edges
@@ -339,6 +345,7 @@ void filter7(){ //Detect Edges
   
 
 }
+//___________________________________________________________
 
 //Ahmed M. Hany
 
@@ -434,6 +441,7 @@ void filter8(){ // Enlarge Image
   }
 
 }
+//___________________________________________________________
 
 //Omnia
 // Shrink image
@@ -499,9 +507,7 @@ void filter9(){
   copyOfImage(shrinkimage);
 }
   
-
-
-
+//___________________________________________________________
 
 //Ahmed Alaa
 void mirror_left(){
@@ -571,7 +577,7 @@ void filtera(){ // Mirror image
     }
 }
 
-
+//___________________________________________________________
 
 //Ahmed M. Hany
 
@@ -670,6 +676,9 @@ void filterb(){ //shuffle image
       y=0;
     }
 }
+
+//___________________________________________________________
+
 
 //omnia
 //Blur
