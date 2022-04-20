@@ -612,5 +612,35 @@ void filterb(){ //shuffle image
 
 //omnia
 void filterc(){ //Blur
-  
+ 
+unsigned char m[3][3];
+
+void part(int k,int f){
+  int sum=0;
+    for (int i =k ; i < k+3 ; i++){
+      for ( int j = f ; j < f+3 ; j++){
+        m[i-k][j-f]=image[i][j];
+        sum += image[i][j];
+      }
+  }
+  sum = sum/9;
+  m[1][1]=sum;
+  for (int i =k ; i < k+3 ; i++){
+      for ( int j = f ; j < f+3 ; j++){
+        image[i][j]=m[i-k][j-f];
+      }
+  }
 }
+
+void filterc(){
+
+  for (int v = 0; v < 2; v++)
+  {
+    for (int i =0 ; i < SIZE ; i++){
+        for ( int j = 0 ; j < SIZE ; j++){
+          part(i,j);
+        }
+    }
+  }
+}
+  
