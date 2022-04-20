@@ -323,15 +323,20 @@ else  {
 
 //ahmed alaa
 void filter7(){ //Detect Edges
+
+// nested loops for rows and columns
   for (int i = 0; i < SIZE; i++)
   {
     for (int j = 0; j < SIZE; j++)
     {
+      // check if the pixel's value1 - pixel's value2 is bigger than 33 in columns
+      // or if the pixel's value1 - pixel's value2 is bigger than 33 in rows
+      // * 33 * is the best value to compare in detect edges
       if (abs(image[i][j+1]-image[i][j])>33 || abs(image[i+1][j]-image[i][j])>33){
-        image[i][j]=0;
+        image[i][j]=0; //if true make it black to detect edge 
       }
       else{
-        image [i][j]=255;
+        image [i][j]=255;// else make it false to detect wallpaper and anything else edges
       }
     
     }
@@ -443,13 +448,16 @@ void filter9(){ // Shrink image
 
 
 //Ahmed Alaa
+
+// functions to mirror the user will choose one of them
 void mirror_left(){
-  for (int i = 0; i < SIZE; i++)
+  // nested loops for row and columns 
+  for (int i = 0; i < SIZE; i++)//the row to 256
   {
-    for (int j = 0; j < SIZE/2; j++)
+    for (int j = 0; j < SIZE/2; j++) // coulmns to 128 because we want to mirror the half of the left
     {
       
-       image [i][SIZE -j-1] = image [i][j];
+       image [i][SIZE -j-1] = image [i][j]; //make every pixel in the left half of the picture equal the equivalent to it in the right half of picture 
     }
     
   }
@@ -457,35 +465,39 @@ void mirror_left(){
 }
 
 void mirror_right(){
- for (int i = 0; i < SIZE; i++)
+  // nested loops for row and columns 
+ for (int i = 0; i < SIZE; i++) //the row to 256
   {
-    for (int j = 0; j < SIZE/2; j++)
+  {
+    for (int j = 0; j < SIZE/2; j++) // coulmns to 128 because we want to mirror the half of the right
     {
      
-      image [i][j] = image [i][SIZE -j-1];
+      image [i][j] = image [i][SIZE -j-1]; // make every pixel in the right half of the picture equal the equivalent to it in the left half of picture 
     }
     
   }
 }
 void mirror_upper (){
-   for (int i = 0; i < SIZE/2; i++)
+  // nested loops for row and columns
+   for (int i = 0; i < SIZE/2; i++) // rows to 128 because we want to mirror the half of the upper
   {
-    for (int j = 0; j < SIZE; j++)
+    for (int j = 0; j < SIZE; j++) //the columns to 256
     {
       
-       image [SIZE -i-1][j] = image [i][j];
+       image [SIZE -i-1][j] = image [i][j]; //make every pixel in the bottom half of the picture equal the equivalent to it in the top half of picture  
     }
     
   }
 }
 
 void mirror_lower(){
- for (int i = 0; i < SIZE/2; i++)
+  // nested loops for row and columns
+ for (int i = 0; i < SIZE/2; i++) // rows to 128 because we want to mirror the half of the lower
   {
-    for (int j = 0; j < SIZE; j++)
-    {
+    for (int j = 0; j < SIZE; j++) //the columns to 256
       
-       image [i][j] = image [SIZE -i-1][j];
+       image [i][j] = image [SIZE -i-1][j]; //make every pixel in the top half of the picture equal the equivalent to it in the bottom half of picture  
+    {
     }
     
   }
@@ -493,7 +505,7 @@ void mirror_lower(){
 
 }
 void filtera(){ // Mirror image
-    int x=0;
+    int x=0; // the number of mirror will user choose to do
     cout << "1-left1/2\n2-right1/2\n3-upper1/2\n4-lower1/2\nplease choose type of mirror : ";
     cin>>x;
 
