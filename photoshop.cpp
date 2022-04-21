@@ -5,8 +5,8 @@ Program Description : Apply filters on images
  Author1: Ahmed Mohamed Hany 20210038
  Author2: ahmed Alaa Mohamed 20210027
  Author3: Omnia Magdy abdelnaby 20211018
- Date: 5-4-2022
- Version: 1.0
+ Date: 20-4-2022
+ Version: 2.0
 */
 #include <iostream>
 #include <fstream>
