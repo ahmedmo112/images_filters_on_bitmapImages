@@ -1,11 +1,11 @@
 /*
 FCAI - Programing 1 - 2022 - Assignment 3
 Program Name : Photoshop 
-Program Description : Apply filters on images
+Program Description : Apply filters on images RGB
  Author1: Ahmed Mohamed Hany 20210038
  Author2: ahmed Alaa Mohamed 20210027
  Author3: Omnia Magdy abdelnaby 20211018
- Date: 5-4-2022
+ Date: 21-4-2022
  Version: 1.0
 */
 
@@ -21,23 +21,23 @@ unsigned char imgRGB[SIZE][SIZE][3];
 void loadRGBImage();
 void saveRGBImage();
 
-void filter1();
-void filter2();
-void filter3();
-void filter4();
-void filter5();
-void filter6();
-void filter7();
-void filter8();
-void filter9();
-void filtera();
-void filterb();
-void filterc();
+void filter1(); //Black and white
+void filter2(); //Invert filter
+void filter3(); //Merge filter
+void filter4(); //Flip Filter
+void filter5(); //Rotate Filter
+void filter6(); //Darken and Lighten
+void filter7(); //Detect image Filter
+void filter8(); //Enlarge image Filter
+void filter9(); //shrink image Filter
+void filtera(); //Mirror 1/2 Image filter
+void filterb(); //shuffle image filter
+void filterc(); //Blur Filter
 
 
 int main()
 {
-     char userinput;
+    char userinput;
     bool runner = true;
     cout << "Ahlan ya user ya habiby\n";
     loadRGBImage(); //call load image function
@@ -119,60 +119,46 @@ int main()
 
 
 
-void loadRGBImage () {
+void loadRGBImage () { // function for loading image
    char imageFileName[100];
-
-   // Get gray scale image file name
    cout << "Enter the source image file name: ";
-   cin >> imageFileName;
-
-   // Add to it .bmp extension and load image
+   cin >> imageFileName; //take input from user
    strcat (imageFileName, ".bmp");
-   readRGBBMP(imageFileName, imgRGB);
+   readRGBBMP(imageFileName, imgRGB); //call function readRGBBMP to read file
 }
 
-void saveRGBImage () {
-
+void saveRGBImage () { //function for loading image
    char imageFileName[100];
-
-   // Get gray scale image target file name
    cout << "Enter the target image file name: ";
-   cin >> imageFileName;
-
-   // Add to it .bmp extension and load image
-   strcat (imageFileName, ".bmp");
-   writeRGBBMP(imageFileName, imgRGB);
+   cin >> imageFileName; //take input from user
+   strcat (imageFileName, ".bmp"); 
+   writeRGBBMP(imageFileName, imgRGB); //call function writeRGBBMP to write file
 }
 
 
-void filter1(){
+void filter1(){ //Black and white
     int avg=0,sum=0;
   for(int i=0; i < SIZE; i++){
     for(int j=0; j < SIZE; j++){
 
-        avg += ((imgRGB[i][j][0]+imgRGB[i][j][1]+imgRGB[i][j][2])/3);
+        avg += ((imgRGB[i][j][0]+imgRGB[i][j][1]+imgRGB[i][j][2])/3); //Add the size of each pixel color to the avg to get avg
     }
   }
-
-
-  avg = avg/(SIZE*SIZE);
-
+  avg = avg/(SIZE*SIZE); //avg 
   for(int i=0; i < SIZE; i++){
     for(int j=0; j < SIZE; j++){
       for(int k=0; k < RGB; k++){
-        sum += imgRGB[i][j][k];
+        sum += imgRGB[i][j][k]; //get sum of the one pixel colors
       }
-   
-      sum =sum /3;
-      // cout<<sum<<endl;
-      if (sum < avg)
+      sum =sum /3; //get avg by divided by 3
+      if (sum < avg) 
       {
-        imgRGB[i][j][0] = 0;
+        imgRGB[i][j][0] = 0; //set to 0
         imgRGB[i][j][1] = 0;
         imgRGB[i][j][2] = 0;
       }else{
         imgRGB[i][j][0] = 255;
-        imgRGB[i][j][1] = 255;
+        imgRGB[i][j][1] = 255; //set to 255
         imgRGB[i][j][2] = 255;
 
       }
@@ -182,11 +168,12 @@ void filter1(){
   }
 }
 
-void filter2(){
+void filter2(){ //invert
     for(int i=0; i < SIZE; i++){
     for(int j=0; j < SIZE; j++){
       for(int k=0; k < RGB; k++){
-        imgRGB[i][j][k]= 255 - imgRGB[i][j][k];
+        // get every color of the pixel in the image and subtract it from 255
+        imgRGB[i][j][k]= 255 - imgRGB[i][j][k]; 
       }
 
     }

@@ -22,18 +22,18 @@ unsigned char image[SIZE][SIZE];
 void loadImage();
 void saveImage();
 
-void filter1();
-void filter2();
-void filter3();
-void filter4();
-void filter5();
-void filter6();
-void filter7();
-void filter8();
-void filter9();
-void filtera();
-void filterb();
-void filterc();
+void filter1(); //Black and white
+void filter2(); //Invert filter
+void filter3(); //Merge filter
+void filter4(); //Flip Filter
+void filter5(); //Rotate Filter
+void filter6(); //Darken and Lighten
+void filter7(); //Detect image Filter
+void filter8(); //Enlarge image Filter
+void filter9(); //shrink image Filter
+void filtera(); //Mirror 1/2 Image filter
+void filterb(); //shuffle image filter
+void filterc(); //Blur Filter
 
 int main()
 {
@@ -44,9 +44,9 @@ int main()
     while (runner)
     {
         //choices of filters to apply
-        cout << "Please select a filter to apply or 0 to exit:\n1-Black & White Filter\n2-Invert Filter\n"
+        cout << "\nPlease select a filter to apply or 0 to exit:\n1-Black & White Filter\n2-Invert Filter\n"
              << "3-Merge Filter\n4-Flip Filter\n5-Rotate Image\n6-Darken and Lighten Image\n7-Detect Image Edges\n8-Enlarge Image\n"
-             <<"9-Shrink Image\na-Mirror 1/2 IMage\nb-Shuffle Image\nc-Blur Image\ns-Save the image to a file\n0-Exit\n";
+             <<"9-Shrink Image\na-Mirror 1/2 Image\nb-Shuffle Image\nc-Blur Image\ns-Save the image to a file\n0-Exit\n";
         cout << "Your Choice : ";
         cin >> userinput; // take from user his choice
         switch (userinput) //switch statment for the choice
