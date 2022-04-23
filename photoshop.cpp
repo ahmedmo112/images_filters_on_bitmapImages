@@ -307,7 +307,7 @@ void lighten()
 
 
 // Omnia
-void filter6 () //darkem and lighten
+void filter6 () //darken and lighten
 {
   int choice ;
 cout<<"do you want to "<<endl<<" 1-darken" <<endl<<" 2-lighten"<<endl;
@@ -450,10 +450,11 @@ void filter8(){ // Enlarge Image
 
 //Omnia
 // Shrink image
- unsigned char shrinkimage[SIZE][SIZE];
-void copyOfImage(unsigned char shrinkimage[SIZE][SIZE])
+ unsigned char shrinkimage[SIZE][SIZE]; //declear new image aaray
+void copyOfImage(unsigned char shrinkimage[SIZE][SIZE]) //function to take a copy from the origianl image
 {
-    for (int i = 0 ;i < SIZE ; i++)
+    for (int i = 0 ;i < SIZE ; i++)  // nested loops for rows and columns
+   
     {
         for ( int j = 0 ; j < SIZE ; j++)
         {
@@ -463,7 +464,7 @@ void copyOfImage(unsigned char shrinkimage[SIZE][SIZE])
 }
 
 
-void shrink4()
+void shrink4()  //function to shrink the image to 1/4
 {
     for (int i = 0 ; i < SIZE ; i++){
         for (int j = 0 ; j < SIZE ; j++){
@@ -473,7 +474,7 @@ void shrink4()
 
 }
 
-void shrink2()
+void shrink2() //function to shrink the image to 1/2
 {
     for (int i = 0 ; i < SIZE ; i++){
         for (int j = 0 ; j < SIZE ; j++){
@@ -483,11 +484,11 @@ void shrink2()
 
 }
 
-void shrink3()
+void shrink3() //function to shrink the image to 1/3
 {
     for (int i = 0 ; i < SIZE ; i++){
         for (int j = 0 ; j < SIZE ; j++){
-            shrinkimage[i/3][j/3] = image[i][j];
+            shrinkimage[i/3][j/3] = image[i][j]; 
         }
     }
 
@@ -698,18 +699,18 @@ void filterb(){ //shuffle image
 //omnia
 //Blur
 
-unsigned char m[3][3];
+unsigned char m[3][3]; //declear new aaray 3x3
 
 void part(int k,int f){
   int sum=0;
-    for (int i =k ; i < k+3 ; i++){
+    for (int i =k ; i < k+3 ; i++){ //nested loops for each 3 pixels (rows and columns)
       for ( int j = f ; j < f+3 ; j++){
-        m[i-k][j-f]=image[i][j];
+        m[i-k][j-f]=image[i][j]; 
         sum += image[i][j];
       }
   }
-  sum = sum/9;
-  m[1][1]=sum;
+  sum = sum/9; //to calculate the average
+  m[1][1]=sum; 
   for (int i =k ; i < k+3 ; i++){
       for ( int j = f ; j < f+3 ; j++){
         image[i][j]=m[i-k][j-f];
@@ -724,7 +725,7 @@ void filterc(){
     for (int i =0 ; i < SIZE ; i++){
         for ( int j = 0 ; j < SIZE ; j++){
           part(i,j);
-        }
+        } 
     }
   }
 }
