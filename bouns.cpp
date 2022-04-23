@@ -332,17 +332,20 @@ void filter6(){
 }
 
 void filter7(){
+  // nested loops for rows and columns
    for (int i = 0; i < SIZE; i++)
    {
     for (int j = 0; j < SIZE; j++)
     {
+            // check if the pixel's value1 - pixel's value2 is bigger than 25 in columns
+      // or if the pixel's value1 - pixel's value2 is bigger than 25 in rows
       if (abs(imgRGB[i][j+1][0]-imgRGB[i][j][0])>25 || abs(imgRGB[i+1][j][0]-imgRGB[i][j][0])>25){
-        imgRGB[i][j][0]=0;
+        imgRGB[i][j][0]=0; //if true make it black to detect edge 
         imgRGB[i][j][1]=0;
         imgRGB[i][j][2]=0;
       }
       else{
-       imgRGB[i][j][0]=255;
+       imgRGB[i][j][0]=255;// else make it false to detect wallpaper and anything else edges
        imgRGB[i][j][1]=255;
        imgRGB[i][j][2]=255;
       }
@@ -352,10 +355,10 @@ void filter7(){
 
 
 //----------------------------
-unsigned char img2[SIZE][SIZE][3] ;
+unsigned char img2[SIZE][SIZE][3] ;//declear new imagr aaray
 int x=0,y=0;
 
-void copyRGBimage(unsigned char img2[SIZE][SIZE][3]){
+void copyRGBimage(unsigned char img2[SIZE][SIZE][3]){ //function to take a copy from the origianl image
     for (int i = 0; i < SIZE; i++)
     {
         for (int j = 0; j < SIZE; j++)
@@ -371,15 +374,15 @@ void copyRGBimage(unsigned char img2[SIZE][SIZE][3]){
     }
 }
 
-void enlargeFirstQ(){
+void enlargeFirstQ(){// function for enlarge first Quarter
     for (int i = 0; i < SIZE/2; i++) {
       for (int j = 0; j< SIZE/2; j++) {
         for (int k = 0; k < 3; k++)
         {
-        imgRGB[x][y][k] = img2[i][j][k];
-        imgRGB[x][y+1][k]= img2[i][j][k];
-        imgRGB[x+1][y+1][k]= img2[i][j][k];
-        imgRGB[x+1][y][k]= img2[i][j][k];
+        imgRGB[x][y][k] = img2[i][j][k];//take first pixel and assign it to first pixel in image
+        imgRGB[x][y+1][k]= img2[i][j][k];//take second on right pixel and assign it to  second on right pixel in image
+        imgRGB[x+1][y+1][k]= img2[i][j][k];//take last pixel and assign it to last pixel in image
+        imgRGB[x+1][y][k]= img2[i][j][k];//take dwon pixel and assign it to dawon pixel in image
         }
         y+=2;
       }
@@ -388,15 +391,15 @@ void enlargeFirstQ(){
     }
 }
 
-void enlargeSecondQ(){
+void enlargeSecondQ(){// function for enlarge second Quarter
    for (int i = 0; i < SIZE/2; i++) {
       for (int j = (SIZE/2); j< SIZE; j++) {
          for (int k = 0; k < 3; k++)
         {
-        imgRGB[x][y][k] = img2[i][j][k];
-        imgRGB[x][y+1][k]= img2[i][j][k];
-        imgRGB[x+1][y+1][k]= img2[i][j][k];
-        imgRGB[x+1][y][k]= img2[i][j][k];
+        imgRGB[x][y][k] = img2[i][j][k];//take first pixel and assign it to first pixel in image
+        imgRGB[x][y+1][k]= img2[i][j][k];//take second on right pixel and assign it to  second on right pixel in image
+        imgRGB[x+1][y+1][k]= img2[i][j][k];//take last pixel and assign it to last pixel in image
+        imgRGB[x+1][y][k]= img2[i][j][k];//take dwon pixel and assign it to dawon pixel in image
         }
         y+=2;
       
@@ -406,15 +409,15 @@ void enlargeSecondQ(){
     }
 }
 
-void enlargeThirdQ(){
+void enlargeThirdQ(){// function for enlarge third Quarter
    for (int i = (SIZE/2); i < SIZE; i++) {
       for (int j = 0; j< SIZE/2; j++) {
         for (int k = 0; k < 3; k++)
         {
-        imgRGB[x][y][k] = img2[i][j][k];
-        imgRGB[x][y+1][k]= img2[i][j][k];
-        imgRGB[x+1][y+1][k]= img2[i][j][k];
-        imgRGB[x+1][y][k]= img2[i][j][k];
+        imgRGB[x][y][k] = img2[i][j][k];//take first pixel and assign it to first pixel in image
+        imgRGB[x][y+1][k]= img2[i][j][k]; //take second on right pixel and assign it to  second on right pixel in image
+        imgRGB[x+1][y+1][k]= img2[i][j][k];//take last pixel and assign it to last pixel in image
+        imgRGB[x+1][y][k]= img2[i][j][k];//take dwon pixel and assign it to dawon pixel in image
         }
         y+=2;
       }
@@ -423,15 +426,15 @@ void enlargeThirdQ(){
     }
 }
 
-void enlargefouthQ(){
+void enlargefouthQ(){// function for enlarge fourth Quarter
   for (int i = (SIZE/2); i < SIZE; i++) {
       for (int j = (SIZE/2); j< SIZE; j++) {
          for (int k = 0; k < 3; k++)
         {
-        imgRGB[x][y][k] = img2[i][j][k];
-        imgRGB[x][y+1][k]= img2[i][j][k];
-        imgRGB[x+1][y+1][k]= img2[i][j][k];
-        imgRGB[x+1][y][k]= img2[i][j][k];
+        imgRGB[x][y][k] = img2[i][j][k];//take first pixel and assign it to first pixel in image
+        imgRGB[x][y+1][k]= img2[i][j][k];//take second on right pixel and assign it to  second on right pixel in image
+        imgRGB[x+1][y+1][k]= img2[i][j][k];//take last pixel and assign it to last pixel in image
+        imgRGB[x+1][y][k]= img2[i][j][k];//take dwon pixel and assign it to dawon pixel in image
         }
         y+=2;
       }
@@ -447,7 +450,7 @@ void filter8(){
   copyRGBimage(img2);
 
   cout<<"choose which quarter you want to enlarge 1 , 2 , 3 or 4: ";
-  cin>>choice;
+  cin>>choice;//take user input
   if (choice == 1)
   {
    enlargeFirstQ();
@@ -466,10 +469,10 @@ void filter8(){
 
 //---------------------
 
-unsigned char shrinkimage[SIZE][SIZE][RGB];
-void copyOfImage(unsigned char shrinkimage[SIZE][SIZE][RGB])
+unsigned char shrinkimage[SIZE][SIZE][RGB]; //declear new image aaray
+void copyOfImage(unsigned char shrinkimage[SIZE][SIZE][RGB]) //function to take a copy from the origianl image
 {
-    for (int i = 0 ;i < SIZE ; i++)
+    for (int i = 0 ;i < SIZE ; i++) // nested loops for rows and columns
     {
         for ( int j = 0 ; j < SIZE ; j++)
         {
@@ -482,7 +485,7 @@ void copyOfImage(unsigned char shrinkimage[SIZE][SIZE][RGB])
 }
 
 
-void shrink4()
+void shrink4() //function to shrink the image to 1/4
 {
     for (int i = 0 ; i < SIZE ; i++){
         for (int j = 0 ; j < SIZE ; j++){
@@ -495,7 +498,7 @@ void shrink4()
 
 }
 
-void shrink2()
+void shrink2() //function to shrink the image to 1/2
 {
     for (int i = 0 ; i < SIZE ; i++){
         for (int j = 0 ; j < SIZE ; j++){
@@ -508,7 +511,7 @@ void shrink2()
 
 }
 
-void shrink3()
+void shrink3() //function to shrink the image to 1/3
 {
     for (int i = 0 ; i < SIZE ; i++){
         for (int j = 0 ; j < SIZE ; j++){
@@ -540,7 +543,11 @@ void filter9(){
   copyOfImage(shrinkimage);
 }
 
+
+// functions to mirror the user will choose one of them
+
 void mirror_left(){
+  // nested loops for row and columns 
   for (int i = 0; i < SIZE; i++)
   {
     for (int j = 0; j < SIZE/2; j++)
@@ -548,7 +555,7 @@ void mirror_left(){
       for (int k = 0; k < 3; k++)
         {
       
-      imgRGB[i][SIZE -j-1][k] = imgRGB[i][j][k];
+      imgRGB[i][SIZE -j-1][k] = imgRGB[i][j][k];//make every pixel in the left half of the picture equal the equivalent to it in the right half of picture
         }
     }
     
@@ -557,26 +564,28 @@ void mirror_left(){
 }
 
 void mirror_right(){
+  // nested loops for row and columns 
  for (int i = 0; i < SIZE; i++)
   {
     for (int j = 0; j < SIZE/2; j++)
     {
      for (int k = 0; k < 3; k++)
         {
-      imgRGB[i][j][k] =  imgRGB[i][SIZE -j-1][k];
+      imgRGB[i][j][k] =  imgRGB[i][SIZE -j-1][k]; // make every pixel in the right half of the picture equal the equivalent to it in the left half of picture 
         }
     }
     
   }
 }
 void mirror_upper (){
+  // nested loops for row and columns 
    for (int i = 0; i < SIZE/2; i++)
   {
     for (int j = 0; j < SIZE; j++)
     {
       for (int k = 0; k < 3; k++)
         {
-      imgRGB [SIZE -i-1][j][k] =imgRGB[i][j][k];
+      imgRGB [SIZE -i-1][j][k] =imgRGB[i][j][k]; //make every pixel in the bottom half of the picture equal the equivalent to it in the top half of picture 
         }
     }
     
@@ -584,13 +593,14 @@ void mirror_upper (){
 }
 
 void mirror_lower(){
+  // nested loops for row and columns 
  for (int i = 0; i < SIZE/2; i++)
   {
     for (int j = 0; j < SIZE; j++)
     {
      for (int k = 0; k < 3; k++)
         { 
-       imgRGB[i][j][k] = imgRGB [SIZE -i-1][j][k];
+       imgRGB[i][j][k] = imgRGB [SIZE -i-1][j][k]; //make every pixel in the top half of the picture equal the equivalent to it in the bottom half of picture  
         }
     }
     
@@ -600,7 +610,7 @@ void mirror_lower(){
 }
 
 void filtera(){
-    int x=0;
+    int x=0;  // the number of mirror will user choose to do
     cout << "1-left1/2\n2-right1/2\n3-upper1/2\n4-lower1/2\nplease choose type of mirror : ";
     cin>>x;
 
@@ -618,9 +628,9 @@ void filtera(){
 }
 
 //-------------------
-unsigned char Q1[4][128][128][3] ;
+unsigned char Q1[4][128][128][3] ; // declear quarter array for each quarter
 
-void saveEachQuarter(){
+void saveEachQuarter(){ //functon for store every quarter
   x=0,y=0;
   for (int i = 0; i < SIZE/2; i++)
   {
@@ -629,7 +639,7 @@ void saveEachQuarter(){
       for (int k = 0; k < 3; k++)
       {
         
-      Q1[0][x][y][k]=imgRGB[i][j][k];
+      Q1[0][x][y][k]=imgRGB[i][j][k]; //get pixels of first Quarter into quarter array
       }
       
       y++;
@@ -643,7 +653,7 @@ void saveEachQuarter(){
         for (int k = 0; k < 3; k++)
       {
         
-      Q1[1][x][y][k]=imgRGB[i][j][k];
+      Q1[1][x][y][k]=imgRGB[i][j][k]; //get pixels of second Quarter into quarter array
       }
         y++;
       }
@@ -656,7 +666,7 @@ void saveEachQuarter(){
         for (int k = 0; k < 3; k++)
       {
         
-      Q1[2][x][y][k]=imgRGB[i][j][k];
+      Q1[2][x][y][k]=imgRGB[i][j][k]; //get pixels of third Quarter into quarter array
       }
         y++;
       }
@@ -670,7 +680,7 @@ void saveEachQuarter(){
         for (int k = 0; k < 3; k++)
       {
         
-      Q1[3][x][y][k]=imgRGB[i][j][k];
+      Q1[3][x][y][k]=imgRGB[i][j][k]; //get pixels of fourth Quarter into quarter array
       }
         y++;
       }
@@ -680,14 +690,14 @@ void saveEachQuarter(){
 }
 
 void filterb(){
-    saveEachQuarter();
+    saveEachQuarter();  //call save each quarter function
     int choice[4];
     x=0,y=0;
 
   cout<<"Enter new order of Quarters: ";
   for (int i = 0; i < 4; i++)
   {
-  cin>>choice[i];
+  cin>>choice[i]; //take from user the new order and save them in array
   }
 
     for (int i = 0; i < SIZE/2; i++) {
@@ -695,7 +705,7 @@ void filterb(){
         for (int k = 0; k < 3; k++)
       {
         
-        imgRGB[i][j][k] = Q1[choice[0]-1][x][y][k];
+        imgRGB[i][j][k] = Q1[choice[0]-1][x][y][k]; //take the first index the user input and add it to first quarter at image
       }
         y++;
       }
@@ -707,7 +717,7 @@ void filterb(){
       for (int j = (SIZE/2); j< SIZE; j++) {
          for (int k = 0; k < 3; k++)
       {
-        
+        //take the second index the user input and add it to second quarter at image
         imgRGB[i][j][k] = Q1[choice[1]-1][x][y][k];
       }
 
@@ -723,7 +733,7 @@ void filterb(){
       for (int j = 0; j< SIZE/2; j++) {
         for (int k = 0; k < 3; k++)
       {
-        
+        //take the third index the user input and add it to third quarter at image
         imgRGB[i][j][k] = Q1[choice[2]-1][x][y][k];
       }
         y++;
@@ -738,7 +748,7 @@ void filterb(){
       for (int j = (SIZE/2); j< SIZE; j++) {
          for (int k = 0; k < 3; k++)
       {
-        
+        //take the fourth index the user input and add it to fourth quarter at image
         imgRGB[i][j][k] = Q1[choice[3]-1][x][y][k];
       }
         y++;
@@ -749,20 +759,20 @@ void filterb(){
 }
 
 
-unsigned char m[3][3][3];
+unsigned char m[3][3][3]; //declear new aaray 3x3x3
 
 void part(int k,int f){
   int sum=0;
   for (int x= 0; x < 3; x++)
   { 
     sum =0;
-    for (int i =k ; i < k+3 ; i++){
+    for (int i =k ; i < k+3 ; i++){ //nested loops for each 3 pixels (rows and columns)
       for ( int j = f ; j < f+3 ; j++){
         m[i-k][j-f][x]=imgRGB[i][j][x];
         sum += imgRGB[i][j][x];
         }
       }
-    sum = sum/9;
+    sum = sum/9; //to calculate the average
     m[1][1][x]=sum;
   }
   for (int i =k ; i < k+3 ; i++){

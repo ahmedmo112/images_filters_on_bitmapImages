@@ -650,7 +650,7 @@ void filterb(){ //shuffle image
 
     for (int i = 0; i < SIZE/2; i++) {
       for (int j = 0; j< SIZE/2; j++) {
-        image[i][j] = quarterArr[choice[0]-1][x][y]; //take the first index the user input and add it to first quarter at image
+        image[i][j] = quarterArr[choice[0]-1][x][y]; //take the  indexs the user input and add it to first quarter at image
         y++;                                           
       }
       x++;
