@@ -477,6 +477,7 @@ void mirror_right(){
     
   }
 }
+}
 void mirror_upper (){
   // nested loops for row and columns
    for (int i = 0; i < SIZE/2; i++) // rows to 128 because we want to mirror the half of the upper
