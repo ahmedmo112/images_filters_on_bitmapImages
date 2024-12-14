@@ -449,7 +449,7 @@ void filter8(){
   
   copyRGBimage(img2);
 
-  cout<<"choose which quarter you want to enlarge 1 , 2 , 3 or 4: ";
+  cout<<"choose which quarter you want to enlarge 1 , 2 , 3 or 4  : ";
   cin>>choice;//take user input
   if (choice == 1)
   {
@@ -463,7 +463,7 @@ void filter8(){
   {
     enlargefouthQ();
   }else{
-    cout<<"unvalid quarter number , Try again!\n";
+    cout<<"unvalid quarter number, Try again!\n";
   }
 }
 
@@ -502,7 +502,7 @@ void shrink2() //function to shrink the image to 1/2
 {
     for (int i = 0 ; i < SIZE ; i++){
         for (int j = 0 ; j < SIZE ; j++){
-            for (int k = 0; k < 3; k++)
+            for (int k = 0; k <3; k++)
           {
             shrinkimage[i/2][j/2][k] = imgRGB[i][j][k];
           }
