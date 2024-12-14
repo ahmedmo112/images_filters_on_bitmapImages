@@ -340,7 +340,8 @@ void filter7(){
             // check if the pixel's value1 - pixel's value2 is bigger than 25 in columns
       // or if the pixel's value1 - pixel's value2 is bigger than 25 in rows
       if (abs(imgRGB[i][j+1][0]-imgRGB[i][j][0])>25 || abs(imgRGB[i+1][j][0]-imgRGB[i][j][0])>25){
-        imgRGB[i][j][0]=0; //if true make it black to detect edge 
+        imgRGB[i][j][0]=0; 
+       
         imgRGB[i][j][1]=0;
         imgRGB[i][j][2]=0;
       }
