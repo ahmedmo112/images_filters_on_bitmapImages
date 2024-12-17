@@ -128,7 +128,7 @@ void loadRGBImage () { // function for loading image
 }
 
 void saveRGBImage () { //function for loading image
-   char imageFileName[100];
+   char imageFileName[200];
    cout << "Enter the target image file name: ";
    cin >> imageFileName; //take input from user
    strcat (imageFileName, ".bmp"); 
@@ -154,8 +154,8 @@ void filter1(){ //Black and white
       if (sum < avg) 
       {
         imgRGB[i][j][0] = 0; //set to 0
-        imgRGB[i][j][1] = 0;
         imgRGB[i][j][2] = 0;
+        imgRGB[i][j][1] = 0;
       }else{
         imgRGB[i][j][0] = 255;
         imgRGB[i][j][1] = 255; //set to 255
